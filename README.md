@@ -213,5 +213,3 @@ The portal is fully responsive and optimized for:
 ## 👩‍💻 Developed By
 
 Khyati Malik
-
----
