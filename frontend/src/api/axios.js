@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 // =============================================
-// CREATE AXIOS INSTANCE
+// AXIOS INSTANCE
 // =============================================
 
 const api = axios.create({
@@ -29,16 +29,8 @@ api.interceptors.request.use(
 
   (config) => {
 
-    // =========================================
-    // GET TOKEN
-    // =========================================
-
     const token =
       localStorage.getItem('token');
-
-    // =========================================
-    // ATTACH TOKEN
-    // =========================================
 
     if (token) {
 
@@ -101,7 +93,6 @@ api.interceptors.response.use(
         'Session expired. Please login again.'
       );
 
-      // Redirect to login
       window.location.href = '/login';
     }
 
@@ -118,7 +109,7 @@ api.interceptors.response.use(
     }
 
     // =========================================
-    // VALIDATION ERROR
+    // BAD REQUEST
     // =========================================
 
     else if (status === 400) {
