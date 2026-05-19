@@ -210,20 +210,6 @@ The portal is fully responsive and optimized for:
 
 ---
 
-## 🎯 Hackathon Problem Statement Coverage
-
-Implemented:
-- Goal Creation & Approval
-- Quarterly Check-ins
-- Manager Review Workflow
-- Dashboard Analytics
-- Employee/Manager/Admin Roles
-- Progress Tracking
-- Validation Rules
-- Reporting Features
-
----
-
 ## 👩‍💻 Developed By
 
 Khyati Malik
