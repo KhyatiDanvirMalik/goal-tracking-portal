@@ -215,7 +215,3 @@ The portal is fully responsive and optimized for:
 Khyati Malik
 
 ---
-
-## 📄 License
-
-This project is developed for educational and hackathon purposes.
