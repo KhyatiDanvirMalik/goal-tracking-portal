@@ -36,6 +36,47 @@ async function seedDatabase() {
     console.log('✅ Schema applied');
 
     // =====================================================
+    // CREATE INDEXES (MySQL-safe: only if not exists)
+    // =====================================================
+
+    const indexes = [
+      { name: 'idx_users_email',        table: 'users',      col: 'email' },
+      { name: 'idx_goals_user',         table: 'goals',      col: 'user_id' },
+      { name: 'idx_goals_cycle',        table: 'goals',      col: 'cycle_id' },
+      { name: 'idx_checkins_goal',      table: 'checkins',   col: 'goal_id' },
+      { name: 'idx_notifications_user', table: 'notifications', col: 'user_id' },
+    ];
+
+    for (const idx of indexes) {
+      const [rows] = await conn.query(
+        `SELECT COUNT(*) as cnt FROM information_schema.statistics
+         WHERE table_schema = DATABASE()
+         AND table_name = ? AND index_name = ?`,
+        [idx.table, idx.name]
+      );
+      if (rows[0].cnt === 0) {
+        await conn.query(
+          `CREATE INDEX ${idx.name} ON ${idx.table}(${idx.col})`
+        );
+      }
+    }
+
+    // Composite index for audit_logs
+    const [auditIdx] = await conn.query(
+      `SELECT COUNT(*) as cnt FROM information_schema.statistics
+       WHERE table_schema = DATABASE()
+       AND table_name = 'audit_logs' AND index_name = 'idx_audit_logs_entity'`,
+    );
+    if (auditIdx[0].cnt === 0) {
+      await conn.query(
+        `CREATE INDEX idx_audit_logs_entity ON audit_logs(entity_type, entity_id)`
+      );
+    }
+
+    console.log('✅ Indexes created');
+
+
+    // =====================================================
     // CLEAR OLD DATA (in FK-safe order)
     // =====================================================
 

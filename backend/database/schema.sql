@@ -128,15 +128,4 @@ CREATE TABLE IF NOT EXISTS notifications (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- =====================================================
--- INDEXES
--- =====================================================
-
-CREATE INDEX IF NOT EXISTS idx_users_email        ON users(email);
-CREATE INDEX IF NOT EXISTS idx_goals_user         ON goals(user_id);
-CREATE INDEX IF NOT EXISTS idx_goals_cycle        ON goals(cycle_id);
-CREATE INDEX IF NOT EXISTS idx_checkins_goal      ON checkins(goal_id);
-CREATE INDEX IF NOT EXISTS idx_audit_logs_entity  ON audit_logs(entity_type, entity_id);
-CREATE INDEX IF NOT EXISTS idx_notifications_user ON notifications(user_id);
-
 SET FOREIGN_KEY_CHECKS = 1;
