@@ -1,0 +1,42 @@
+{
+  "name": "goal-tracking-portal-backend",
+  "version": "2.0.0",
+  "description": "Production-ready Goal Setting & Tracking Portal Backend",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node database/seed.js",
+    "reset-db": "node database/seed.js"
+  },
+  "keywords": [
+    "goal-tracking",
+    "performance-management",
+    "employee-goals",
+    "hackathon",
+    "express",
+    "nodejs",
+    "backend-api"
+  ],
+  "author": "Khyati Malik",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.2.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
